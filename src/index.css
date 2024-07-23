@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.App,
+.notes,
+.reminders {
+  height: auto;
+}
+
+:root {
+  --main-border-color: #cccccc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: roboto;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.buttonContainer {
+  width: 93.5%;
+  margin: 60px auto 20px auto;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+.left {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.binList,
+.noteList {
+  width: 75%;
+  height: auto;
+  margin: auto;
+}
+
+.content-container {
+  margin-left: 250px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+p,
+button,
+h1,
+h2,
+h4,
+label,
+option,
+input,
+option,
+textarea,
+select {
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  color: #454545;
+  font-weight: 100;
+}
+
+p {
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.content::after {
+  content: "";
+  flex: auto;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 5%;
+  gap: 15px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  gap: 5px;
+}
+
+textarea {
+  height: 150px;
+  width: 100%;
+  resize: none;
+}
+
+select,
+input {
+  height: 30px;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  justify-self: flex-start;
+  align-items: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid rgb(121, 121, 121);
+  border-radius: 7px;
+  background-color: white;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #51a8f9;
+  border: none;
+}
+
+input[type="checkbox"]::before {
+  content: "✓";
+  font-weight: 900;
+  display: inline-block;
+  font-size: 16px;
+  color: #ffffff;
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  visibility: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="checkbox"]:checked::before {
+  visibility: visible;
+}
+
+@media (max-width: 1050px) {
+  .content-container {
+    margin: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .content-container {
+    margin: 0;
+  }
+}

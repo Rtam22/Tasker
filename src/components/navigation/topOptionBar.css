@@ -1,0 +1,38 @@
+.topOptionBarContainer {
+  width: 70%;
+  height: 75px;
+  display: flex;
+  padding: 25px 0px 10px 0px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.topOptionBarContainer button {
+  width: 120px;
+  height: 40px;
+  background-color: #51a8f9;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.topOptionBarContainer h2 {
+  width: 200px;
+  margin-top: 5px;
+  font-size: 30px;
+  text-align: center;
+  color: rgb(71, 71, 71);
+}
+
+.topOptionBar hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid rgb(182, 182, 182);
+  height: 0.5px;
+  margin-bottom: 0px;
+}
+
+.topOptionBar img {
+  padding: 0px 0px 0px 80px;
+}

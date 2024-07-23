@@ -1,0 +1,51 @@
+.reminderList {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.reminderList .content {
+  width: 93.5%;
+  display: grid;
+  gap: 40px 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  position: relative;
+}
+
+.empty-conatiner {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-conatiner p {
+  font-size: 22px;
+  color: rgb(127, 165, 194);
+}
+
+.reminder-bell {
+  height: 200px;
+  color: rgb(207, 231, 250);
+}
+
+@media (max-width: 1740px) {
+  .reminderList .content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 1230px) {
+  .reminderList .content {
+    grid-template-columns: 1fr;
+  }
+}

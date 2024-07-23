@@ -1,0 +1,24 @@
+.tasknavigationButton {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 30px 0px 60px;
+}
+
+.tasknavigationButton p {
+  color: white;
+  font-size: 15px;
+}
+
+.tasknavigationButton:hover {
+  background-color: rgb(59, 59, 59);
+}
+
+.active .tasknavigationButton {
+  background-color: rgb(110, 109, 109);
+}
+
+.active .tasknavigationButton p {
+  color: rgb(252, 252, 252);
+  font-weight: 400;
+}

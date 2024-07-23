@@ -1,0 +1,33 @@
+.createButton {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 7px 18px;
+}
+
+.createButton:hover {
+  cursor: pointer;
+}
+
+.noteList .buttonContainer {
+  justify-content: flex-end;
+}
+
+.noteList .content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+@media (max-width: 1550px) {
+  .noteList .content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1100px) {
+  .noteList .content {
+    grid-template-columns: 1fr;
+  }
+}

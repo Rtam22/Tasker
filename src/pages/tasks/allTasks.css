@@ -1,0 +1,21 @@
+.list {
+  width: 75%;
+  display: flex;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.filterButton {
+  border: 1px solid rgb(131, 130, 130);
+  padding: 8px 8px;
+  border-radius: 15px;
+  color: rgb(131, 130, 130);
+  font-size: 14px;
+}
+
+.buttonContainer h4 {
+  position: absolute;
+  top: -55px;
+  left: 0px;
+  color: rgb(121, 121, 121);
+}

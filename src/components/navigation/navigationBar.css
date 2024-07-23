@@ -1,0 +1,39 @@
+.desktopNavigation {
+  width: 250px;
+  height: 100vh;
+  background-color: #292929;
+  box-sizing: border-box;
+  position: fixed;
+}
+
+hr {
+  width: 85%;
+  border-color: rgb(133, 133, 133);
+}
+
+p.taskTitle {
+  color: rgb(133, 133, 133);
+  margin-left: 30px;
+  margin-bottom: 0px;
+}
+
+.mobileNavigation {
+  width: 100vw;
+  height: 50px;
+  background-color: #292929;
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .desktopNavigation {
+    display: none;
+  }
+
+  .navigationBar {
+    height: 50px;
+  }
+
+  .mobileNavigation {
+    display: block;
+  }
+}

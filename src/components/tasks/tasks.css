@@ -1,0 +1,46 @@
+.taskItem {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 30px 3fr 0.5fr 0.45fr 0.45fr 0.05fr;
+  border: 0.5px solid var(--main-border-color);
+  height: 50px;
+  gap: 5px;
+  border-radius: 5px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.taskItem p {
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.taskItem p:first-of-type {
+  text-align: left;
+  overflow: hidden;
+}
+
+.taskItem p:not(:nth-of-type(1)) {
+  width: 85px;
+}
+
+.taskList .description {
+  border: 1px solid rgb(183, 204, 221);
+}
+
+.prio4 {
+  color: red;
+}
+
+.taskItem:not(.description):hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.completed {
+  color: rgb(6, 170, 20);
+}
+
+.overDue {
+  color: rgb(212, 0, 0);
+}
