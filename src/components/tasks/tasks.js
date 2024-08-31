@@ -3,7 +3,7 @@ import "./tasks.css";
 const Tasks = (props) => {
   const handleClick = (event) => {
     if (!event.target.matches('input[type="checkbox"]')) {
-      props.onEdit("edit", props.task);
+      props.onEdit("view", props.task);
     }
   };
   return (

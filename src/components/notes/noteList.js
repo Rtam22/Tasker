@@ -29,7 +29,7 @@ function NoteList() {
           content: "",
           "date created": getDateDDMMYYYY(),
           "date deleted": "",
-          color: Math.floor(Math.random() * 4) + 1,
+          color: Math.floor(Math.random() * 4),
         },
       ]);
       setNoteDraft([""]);
@@ -82,7 +82,7 @@ function NoteList() {
         content: "",
         "date created": getDateDDMMYYYY(),
         "date deleted": "",
-        color: Math.floor(Math.random() * 4) + 1,
+        color: Math.floor(Math.random() * 4),
       },
       ...noteContent,
     ];

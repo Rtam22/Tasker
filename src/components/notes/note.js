@@ -1,28 +1,39 @@
 import "./note.css";
 
 function Note(props) {
-  const colors = [
-    {},
-    {
-      color: "yellow",
-      colorTop: "yellowTop",
-    },
-    {
-      color: "orange",
-      colorTop: "orangeTop",
-    },
-    {
-      color: "green",
-      colorTop: "greenTop",
-    },
-    {
-      color: "blue",
-      colorTop: "blueTop",
-    },
-  ];
+  const noteColorSelect = (number) => {
+    switch (number) {
+      case 0:
+        return {
+          color: "yellow",
+          colorTop: "yellowTop",
+        };
+      case 1:
+        return {
+          color: "orange",
+          colorTop: "orangeTop",
+        };
+      case 2:
+        return {
+          color: "green",
+          colorTop: "greenTop",
+        };
+      case 3:
+        return {
+          color: "blue",
+          colorTop: "blueTop",
+        };
+      default:
+        return {
+          color: "yellow",
+          colorTop: "yellowTop",
+        };
+    }
+  };
+
   return (
-    <div className={`note ${colors[props.color].color}`}>
-      <div className={`note-options ${colors[props.color].colorTop}`}>
+    <div className={`note ${noteColorSelect(props.color).color}`}>
+      <div className={`note-options ${noteColorSelect(props.color).colorTop}`}>
         <button onClick={props.onClick}>x</button>
       </div>
       <div className="note-content">

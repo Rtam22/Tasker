@@ -82,9 +82,9 @@ function WeekTasks() {
           mode={createModal}
           create={true}
           onClose={onClose}
-          TaskSubmit={createModal === "edit" ? handleEdit : handleCreate}
+          TaskSubmit={createModal === "view" ? handleEdit : handleCreate}
           handleEdit={handleEdit}
-          task={createModal === "edit" ? taskToEdit : null}
+          task={createModal === "view" ? taskToEdit : null}
         />
       )}
     </div>

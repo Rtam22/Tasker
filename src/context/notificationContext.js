@@ -96,7 +96,7 @@ export const NotificationProvider = ({ children }) => {
     const interval = setInterval(() => {
       checkTaskDates();
       updateDueTime();
-    }, 1000 * 60);
+    }, 10000);
     return () => clearInterval(interval);
   }, [taskItems]);
 
