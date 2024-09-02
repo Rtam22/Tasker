@@ -8,6 +8,7 @@ import AllTasks from "./pages/tasks/allTasks";
 import CalendarTasks from "./pages/tasks/calendarTasks";
 import TodayTasks from "./pages/tasks/todayTasks";
 import WeekTasks from "./pages/tasks/weekTasks";
+import SearchPage from "./pages/searchPage";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: "week", element: <WeekTasks /> },
       { path: "tasks", element: <AllTasks /> },
       { path: "calendar", element: <CalendarTasks /> },
+      { path: "search", element: <SearchPage /> },
     ],
   },
 ]);
