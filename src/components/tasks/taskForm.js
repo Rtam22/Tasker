@@ -38,8 +38,13 @@ const TaskCreateForm = ({ onClose, TaskSubmit, mode, task }) => {
         currentMode === "edit" ? task.dateCreated : getDateDDMMYYYY(),
       dateDeleted: currentMode === "edit" ? task.dateDeleted : "",
       notified: {
-        dueSoon: dueDateTime < 24 ? true : false,
-        overDue: false,
+        dueSoon:
+          currentMode === "edit"
+            ? task.notified.dueSoon
+            : dueDateTime < 24
+            ? true
+            : false,
+        overDue: currentMode === "edit" ? task.notified.overDue : false,
       },
       status: status,
       priority: priority,

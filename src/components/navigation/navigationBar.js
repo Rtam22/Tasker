@@ -12,9 +12,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { TaskContext } from "../../context/taskContext";
 import { useContext } from "react";
+import { NotificationContext } from "../../context/notificationContext";
 
 function NavigationBar() {
   const { weekCount, todayCount, taskItems } = useContext(TaskContext);
+  const { notifications } = useContext(NotificationContext);
   return (
     <div className="navigationBar">
       <div className="desktopNavigation">
@@ -32,6 +34,10 @@ function NavigationBar() {
           <NavigationButton
             icon={<FontAwesomeIcon className="nav-icon" icon={faBell} />}
             title="Reminders"
+            notification={
+              notifications.length > 0 ? notifications.length : null
+            }
+            reminder={notifications.length > 0 ? true : false}
           />
         </NavLink>
 

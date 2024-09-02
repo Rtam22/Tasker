@@ -19,7 +19,6 @@ export const NotificationProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    console.log(notifications);
     if (IsLoaded) {
       saveToLocalStorage("notificationsContent", notifications);
     }
@@ -64,10 +63,10 @@ export const NotificationProvider = ({ children }) => {
       const taskHoursDue = convertDueByHours(task.dateDue);
       if (taskHoursDue < 24 && !task.notified.dueSoon) {
         addNotification(task, taskHoursDue, "dueSoon");
-        changeNotified(markNotified(task.key, "dueSoon", "true"));
+        changeNotified(markNotified(task.key, "dueSoon", true));
       } else if (taskHoursDue <= 0 && !task.notified.overDue) {
         addNotification(task, taskHoursDue, "overDue");
-        changeNotified(markNotified(task.key, "overDue", "true"));
+        changeNotified(markNotified(task.key, "overDue", true));
       }
     });
   };

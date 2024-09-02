@@ -53,3 +53,15 @@ p.notificationNumber {
 .active .notificationNumber {
   color: rgb(255, 255, 255);
 }
+
+.notificationNumber.reminder {
+  background-color: rgb(212, 7, 7);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  padding-right: 1px;
+  transform: translateX(7px);
+}

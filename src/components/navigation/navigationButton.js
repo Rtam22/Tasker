@@ -5,7 +5,9 @@ function NavigationButton(props) {
     <div className={"navigationButton " + props.active}>
       {props.icon}
       <p>{props.title}</p>
-      <p className="notificationNumber">{props.notification}</p>
+      <p className={`notificationNumber ${props.reminder ? "reminder" : ""}`}>
+        {props.notification}
+      </p>
     </div>
   );
 }
