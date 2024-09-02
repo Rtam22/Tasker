@@ -1,12 +1,12 @@
 import "./topOptionBar.css";
-
+import Search from "../search";
 function TopOptionBar(props) {
   return (
     <div className="topOptionBar">
       <div className="topOptionBarContainer">
-        <button>New Task</button>
+        <button className="button">New Task</button>
         <h2>{props.name}</h2>
-        <img src="https://placehold.co/30x30" alt="placeholder"></img>
+        <Search />
       </div>
       <hr></hr>
     </div>
