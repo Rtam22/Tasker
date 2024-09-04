@@ -42,3 +42,20 @@
 .topOptionBar img {
   padding: 0px 0px 0px 80px;
 }
+
+@media (max-width: 910px) {
+  .topOptionBarContainer {
+    width: 86%;
+  }
+}
+
+@media (max-width: 800px) {
+  .topOptionBarContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .topOptionBarContainer button,
+  .topOptionBarContainer .search-container {
+    display: none;
+  }
+}

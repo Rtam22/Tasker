@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.mobileSelectContainer {
+  display: none;
+}
+
 .taskList .content {
   width: 93.5%;
   display: flex;
@@ -17,4 +21,28 @@
 
 .createBox:hover {
   background-color: rgb(248, 252, 255);
+}
+
+@media (max-width: 910px) {
+  .taskList {
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  .taskList .content {
+    gap: 20px;
+  }
+  .mobileSelectContainer {
+    padding: 0 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid rgb(228, 228, 228);
+    gap: 10px;
+  }
+  .mobileSelectContainer label {
+    margin-top: 3px;
+  }
 }

@@ -151,5 +151,18 @@
   border-top: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 910px) {
+  .content-container .calendar {
+    width: 90%;
+  }
+}
+
+@media (max-width: 420px) {
+  .content-container .calendar {
+    width: 100%;
+    min-width: 0;
+  }
+  .calendar .topContainer p {
+    font-size: 14px;
+  }
 }

@@ -1,0 +1,38 @@
+.mobile-task-item {
+  display: none;
+  border: 1px solid rgb(194, 194, 194);
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.mobile-task-item .top-bar {
+  background-color: aliceblue;
+  height: 35px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.mobile-task-item .flex {
+  display: flex;
+  gap: 15px;
+  padding: 0 10px;
+  height: auto;
+}
+
+.mobile-task-item .flex p {
+  margin: 5px 0;
+}
+
+.mobile-task-item .attribute {
+  color: rgb(139, 139, 139);
+}
+
+@media (max-width: 600px) {
+  .mobile-task-item {
+    display: block;
+  }
+}

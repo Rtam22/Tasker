@@ -40,8 +40,7 @@ body {
   align-items: center;
 }
 
-.binList,
-.noteList {
+.binList {
   width: 75%;
   height: auto;
   margin: auto;
@@ -52,6 +51,7 @@ body {
   width: 100%;
   height: auto;
   position: relative;
+  padding-bottom: 50px;
 }
 
 p,
@@ -80,11 +80,6 @@ p {
   width: 100%;
   height: 100%;
   margin: auto;
-}
-
-.content::after {
-  content: "";
-  flex: auto;
 }
 
 button {
@@ -174,9 +169,15 @@ input[type="checkbox"]:checked::before {
   visibility: visible;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1500px) {
   .content-container {
     margin: 0;
+  }
+}
+
+@media (max-width: 670px) {
+  .buttonContainer {
+    margin: 10px auto 20px auto;
   }
 }
 

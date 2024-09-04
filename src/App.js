@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { TaskProvider } from "./context/taskContext";
 import { BinProvider } from "./context/binContext";
 import { NotificationProvider } from "./context/notificationContext";
+import MobileNavigation from "./components/navigation/mobileNavigation";
 function App() {
   return (
     <React.StrictMode>
@@ -13,6 +14,7 @@ function App() {
           <NotificationProvider>
             <div className="App">
               <NavigationBar />
+              <MobileNavigation />
               <div className="content">
                 <Outlet />
               </div>

@@ -44,3 +44,9 @@
 .overDue {
   color: rgb(212, 0, 0);
 }
+
+@media (max-width: 600px) {
+  .taskItem {
+    display: none;
+  }
+}

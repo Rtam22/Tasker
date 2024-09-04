@@ -15,7 +15,7 @@ function NoteList() {
   const { addNoteToBin, clearRestoredNotes, restoredNotes } =
     useContext(BinContext) ?? {};
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [currentScreen, setCurrentScreen] = useState();
   useEffect(() => {
     const savedNoteContent = LoadUpLocalStorage("noteContent");
     if (savedNoteContent) {

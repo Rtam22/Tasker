@@ -19,3 +19,15 @@
   left: 0px;
   color: rgb(121, 121, 121);
 }
+@media (max-width: 910px) {
+  .list {
+    width: 95%;
+  }
+}
+
+@media (max-width: 670px) {
+  .buttonContainer .filterButton,
+  .buttonContainer h4 {
+    display: none;
+  }
+}

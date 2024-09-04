@@ -1,8 +1,19 @@
+.noteList {
+  width: 70%;
+  height: auto;
+  margin: auto;
+}
+
 .createButton {
   background-color: white;
   border: 1px solid black;
   border-radius: 8px;
   padding: 7px 18px;
+}
+
+.noteList .buttonContainer {
+  margin: 60px 0 20px 0;
+  width: 100%;
 }
 
 .createButton:hover {
@@ -18,16 +29,43 @@
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
+  row-gap: 25px;
+  column-gap: 2%;
 }
 
-@media (max-width: 1550px) {
+@media (max-width: 1250px) {
   .noteList .content {
     grid-template-columns: repeat(2, 1fr);
+    column-gap: 10%;
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 910px) {
+  .content-container .noteList {
+    width: 85%;
+  }
+  .noteList .buttonContainer {
+    margin: 60px 0 20px 0;
+  }
   .noteList .content {
-    grid-template-columns: 1fr;
+    column-gap: 4%;
+  }
+}
+
+@media (max-width: 660px) {
+}
+
+@media (max-width: 550px) {
+  .content-container .noteList {
+    margin: 0 auto;
+  }
+  .noteList .content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 325px) {
+  .content-container .noteList {
+    width: 98%;
   }
 }
