@@ -27,8 +27,14 @@ function Calendar() {
     ...daysArray,
     ...remainingCellsArray,
   ];
-  const { createModal, taskToEdit, onClose, showCreateModal, handleEdit } =
-    UseTaskOperations();
+  const {
+    createModal,
+    taskToEdit,
+    onClose,
+    showCreateModal,
+    handleEdit,
+    handleCreate,
+  } = UseTaskOperations();
 
   const prevMonth = () => {
     setCurrentDate((prevDate) => {
@@ -115,7 +121,7 @@ function Calendar() {
         count++;
         return (
           <span
-            onClick={() => showCreateModal("edit", task)}
+            onClick={() => showCreateModal("view", task)}
             key={index + dateKey}
             className={`cellTask priority${task.priority}`}
           >
@@ -129,17 +135,17 @@ function Calendar() {
 
   return (
     <div className="calendar">
+      {createModal ? (
+        <TaskCreateForm
+          mode={createModal}
+          create={true}
+          onClose={onClose}
+          TaskSubmit={createModal === "view" ? handleEdit : handleCreate}
+          handleEdit={handleEdit}
+          task={createModal === "view" ? taskToEdit : null}
+        />
+      ) : null}
       <div className="topContainer">
-        {createModal ? (
-          <TaskCreateForm
-            mode={createModal}
-            create={true}
-            onClose={onClose}
-            TaskSubmit={createModal === "edit" && handleEdit}
-            handleEdit={handleEdit}
-            task={createModal === "edit" ? taskToEdit : null}
-          />
-        ) : null}
         <button className="calendarButton" onClick={prevMonth}>
           &lt;
         </button>
