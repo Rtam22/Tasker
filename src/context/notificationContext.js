@@ -3,26 +3,16 @@ import { TaskContext } from "./taskContext";
 import { convertDueByHours, getDateDDMMYYYY } from "../utils/dateUtils";
 import { v4 as uuidv4 } from "uuid";
 import { LoadUpLocalStorage, saveToLocalStorage } from "../utils/StorageUtils";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const NotificationContext = createContext();
 
 export const NotificationProvider = ({ children }) => {
   const { taskItems, changeNotified } = useContext(TaskContext);
-  const [notifications, setNotification] = useState([]);
-  const [IsLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    const savedNotification = LoadUpLocalStorage("notificationsContent");
-    if (savedNotification) {
-      setNotification(savedNotification);
-    }
-    setIsLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (IsLoaded) {
-      saveToLocalStorage("notificationsContent", notifications);
-    }
-  }, [notifications, IsLoaded]);
+  const [notifications, setNotification] = useLocalStorage(
+    "notificationsContent",
+    []
+  );
 
   const addNotification = (task, timeLeft, type) => {
     const taskData = {

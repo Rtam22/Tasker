@@ -4,54 +4,25 @@ import { useContext, useEffect, useState } from "react";
 import { BinContext } from "../../context/binContext";
 import { v4 as uuidv4 } from "uuid";
 import { getDateDDMMYYYY } from "../../utils/dateUtils";
-import {
-  LoadUpLocalStorage,
-  saveToLocalStorage,
-} from "../../utils/StorageUtils";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 function NoteList() {
-  const [noteContent, setNoteContent] = useState([]);
-  const [noteDraft, setNoteDraft] = useState([]);
+  const [noteContent, setNoteContent] = useLocalStorage("noteContent", []);
+  const [noteDraft, setNoteDraft] = useState([...noteContent]);
   const { addNoteToBin, clearRestoredNotes, restoredNotes } =
     useContext(BinContext) ?? {};
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [currentScreen, setCurrentScreen] = useState();
-  useEffect(() => {
-    const savedNoteContent = LoadUpLocalStorage("noteContent");
-    if (savedNoteContent) {
-      setNoteContent(savedNoteContent);
-      setNoteDraft(savedNoteContent);
-    } else {
-      setNoteContent([
-        {
-          id: uuidv4(),
-          type: "note",
-          content: "",
-          "date created": getDateDDMMYYYY(),
-          "date deleted": "",
-          color: Math.floor(Math.random() * 4),
-        },
-      ]);
-      setNoteDraft([""]);
-    }
-    setIsLoaded(true);
-  }, []);
 
   useEffect(() => {
-    if (isLoaded) {
-      saveToLocalStorage("noteContent", noteContent);
-    }
-  }, [noteContent, isLoaded]);
+    setNoteDraft(noteContent);
+  }, [noteContent]);
 
   useEffect(() => {
-    if (isLoaded) {
-      if (restoredNotes.length > 0) {
-        setNoteDraft([...restoredNotes, ...noteContent]);
-        setNoteContent([...restoredNotes, ...noteContent]);
-        clearRestoredNotes();
-      }
+    if (restoredNotes.length > 0) {
+      setNoteDraft([...restoredNotes, ...noteContent]);
+      setNoteContent([...restoredNotes, ...noteContent]);
+      clearRestoredNotes();
     }
-  }, [restoredNotes, isLoaded, clearRestoredNotes, noteContent]);
+  }, [restoredNotes, clearRestoredNotes, noteContent]);
 
   const handleChange = (index, event) => {
     const newDraft = [...noteDraft];
@@ -86,7 +57,6 @@ function NoteList() {
       },
       ...noteContent,
     ];
-    console.log(newArray);
     setNoteContent(newArray);
     setNoteDraft(newArray);
   };

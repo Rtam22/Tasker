@@ -8,6 +8,7 @@ import {
   getDateDaysFromToday,
   getDateDDMMYYYY,
 } from "../utils/dateUtils";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 export const TaskContext = createContext();
 
 const initialTasks = [
@@ -73,37 +74,21 @@ const initialTasks = [
 ];
 
 export const TaskProvider = ({ children }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [taskItems, setTaskItems] = useState();
+  const [taskItems, setTaskItems] = useLocalStorage(
+    "taskContent",
+    initialTasks
+  );
   const [todayCount, setTodayCount] = useState();
   const [weekCount, setWeekCount] = useState();
 
   const { restoredTasks, clearRestoredTasks } = useContext(BinContext) ?? {};
 
   useEffect(() => {
-    const taskLocalStorage = LoadUpLocalStorage("taskContent");
-    if (taskLocalStorage) {
-      setTaskItems(taskLocalStorage);
-    } else {
-      setTaskItems(initialTasks);
-    }
-
-    setIsLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (isLoaded) {
-      saveToLocalStorage("taskContent", taskItems);
-    }
-    console.log(taskItems);
-  }, [taskItems, isLoaded]);
-
-  useEffect(() => {
-    if (restoredTasks.length > 0 && isLoaded) {
+    if (restoredTasks.length > 0) {
       setTaskItems([...restoredTasks, ...taskItems]);
       clearRestoredTasks();
     }
-  }, [restoredTasks, isLoaded, clearRestoredTasks, taskItems]);
+  }, [restoredTasks, clearRestoredTasks, taskItems]);
 
   useEffect(() => {
     changeWeekCount();
@@ -167,7 +152,6 @@ export const TaskProvider = ({ children }) => {
         changeNotified,
         todayCount,
         weekCount,
-        isLoaded,
       }}
     >
       {children}
