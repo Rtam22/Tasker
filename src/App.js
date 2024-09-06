@@ -13,8 +13,10 @@ function App() {
         <TaskProvider>
           <NotificationProvider>
             <div className="App">
-              <NavigationBar />
-              <MobileNavigation />
+              <div className="desktopNavigation">
+                <NavigationBar />
+              </div>
+
               <div className="content">
                 <Outlet />
               </div>

@@ -30,7 +30,7 @@
   justify-items: center;
   align-items: center;
   row-gap: 25px;
-  column-gap: 2%;
+  column-gap: 4%;
 }
 
 @media (max-width: 1250px) {
@@ -42,7 +42,7 @@
 
 @media (max-width: 910px) {
   .content-container .noteList {
-    width: 85%;
+    width: 88%;
   }
   .noteList .buttonContainer {
     margin: 60px 0 20px 0;
@@ -52,15 +52,16 @@
   }
 }
 
-@media (max-width: 660px) {
-}
-
 @media (max-width: 550px) {
   .content-container .noteList {
     margin: 0 auto;
   }
   .noteList .content {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .noteList .buttonContainer {
+    margin-top: 30px;
   }
 }
 

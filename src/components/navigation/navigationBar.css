@@ -1,9 +1,32 @@
-.desktopNavigation {
+.desktopNavigation,
+.mobileNavigationBar {
   width: 250px;
   height: 100vh;
   background-color: #292929;
   box-sizing: border-box;
   position: fixed;
+}
+
+.navBar .closeButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: white;
+  right: 18px;
+  top: 45px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  padding-bottom: 4px;
+}
+
+.navBar .closeButton:hover {
+  background-color: #fd7777;
+}
+
+.navBar p {
+  text-wrap: nowrap;
 }
 
 hr {
@@ -27,5 +50,8 @@ p.taskTitle {
 @media (max-width: 1500px) {
   .desktopNavigation {
     display: none;
+  }
+  .navBar .closeButton {
+    display: flex;
   }
 }

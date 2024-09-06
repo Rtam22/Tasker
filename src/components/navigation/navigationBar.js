@@ -14,11 +14,14 @@ import { TaskContext } from "../../context/taskContext";
 import { useContext } from "react";
 import { NotificationContext } from "../../context/notificationContext";
 
-function NavigationBar() {
+function NavigationBar({ onClick }) {
   const { weekCount, todayCount, taskItems } = useContext(TaskContext);
   const { notifications } = useContext(NotificationContext);
   return (
-    <div className="desktopNavigation">
+    <div className="navBar">
+      <button className="closeButton" onClick={onClick}>
+        ‹
+      </button>
       <Logo />
 
       <hr></hr>

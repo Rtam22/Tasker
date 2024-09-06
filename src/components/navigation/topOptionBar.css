@@ -1,20 +1,20 @@
 .topOptionBarContainer {
-  width: 70%;
+  position: relative;
+  width: 100%;
   height: 75px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   box-sizing: border-box;
-  margin: auto;
-
   align-items: flex-end;
+  padding: 0 14.9%;
+  z-index: 1002;
 }
 
-.topOptionBarContainer button {
+.topOptionBarContainer .button {
   width: 120px;
   height: 40px;
   background-color: #51a8f9;
   border: none;
-
   color: white;
 }
 
@@ -31,7 +31,7 @@
   margin: 0;
 }
 
-.topOptionBar hr {
+.topBarHr {
   width: 100%;
   border: none;
   border-top: 1px solid rgb(182, 182, 182);
@@ -39,23 +39,52 @@
   margin-bottom: 0px;
 }
 
-.topOptionBar img {
-  padding: 0px 0px 0px 80px;
+.searchIconContainer {
+  display: none;
+}
+.searchIconContainer .fa-lg {
+  font-size: 23px;
+}
+
+@media (max-width: 1500px) {
+  .desktopNavigation {
+    display: none;
+  }
+  .topOptionBarContainer .button {
+    display: none;
+  }
 }
 
 @media (max-width: 910px) {
   .topOptionBarContainer {
-    width: 86%;
+    padding: 0 5.5%;
   }
 }
 
 @media (max-width: 800px) {
-  .topOptionBarContainer {
-    display: flex;
-    justify-content: center;
-  }
-  .topOptionBarContainer button,
-  .topOptionBarContainer .search-container {
+  .topOptionBarContainer button.task {
     display: none;
+  }
+}
+
+@media (max-width: 780px) {
+  .searchIconContainer {
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+  }
+
+  .desktopSearch {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .topOptionBarContainer h2 {
+    font-size: 28px;
+  }
+
+  .topOptionBarContainer {
+    height: 59px;
   }
 }

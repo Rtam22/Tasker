@@ -1,26 +1,36 @@
+.mobileNavigationBar {
+  z-index: 1100;
+  width: 265px;
+  transition: width 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.mobileNavigationBar.hide {
+  width: 0;
+}
+
 .mobileNavigationContainer {
-  background-color: #292929;
-  height: 50px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 15%;
+  z-index: 1002;
   display: none;
 }
 
+.mobileNavigationContainer .mobileNavigationBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .burgerButton {
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 25px;
 }
 
 @media (max-width: 1500px) {
   .mobileNavigationContainer {
-    display: flex;
+    display: block;
   }
-}
 
-@media (max-width: 910px) {
-  .mobileNavigationContainer {
-    padding: 0 7%;
+  .mobileNavigationBar {
+    z-index: 1000;
   }
 }
