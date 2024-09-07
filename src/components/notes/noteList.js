@@ -36,7 +36,14 @@ function NoteList() {
     const deleteContent = noteContent.filter((_, i) => i !== index);
     setNoteContent(deleteContent);
     setNoteDraft(deleteContent);
-    addNoteToBin(toDelete);
+
+    if (!isNoteEmpty(toDelete.content)) {
+      addNoteToBin(toDelete);
+    }
+  };
+
+  const isNoteEmpty = (string) => {
+    return string.trim().length === 0;
   };
 
   const handleBlur = (index) => {
