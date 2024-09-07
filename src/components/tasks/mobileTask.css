@@ -4,6 +4,7 @@
   width: 100%;
   height: auto;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .mobile-task-item .top-bar {

@@ -14,9 +14,9 @@
   position: relative;
 }
 
-.empty-conatiner {
+.empty-container {
   position: absolute;
-  width: 500px;
+  width: 100%;
   height: 500px;
   top: 50%;
   left: 50%;
@@ -28,13 +28,13 @@
   align-items: center;
 }
 
-.empty-conatiner p {
-  font-size: 22px;
+.empty-container p {
+  font-size: 20px;
   color: rgb(127, 165, 194);
 }
 
-.reminder-bell {
-  height: 200px;
+.emptyIcon {
+  height: 150px;
   color: rgb(207, 231, 250);
 }
 

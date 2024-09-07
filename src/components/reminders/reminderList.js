@@ -41,8 +41,8 @@ const ReminderList = ({ notifications }) => {
             );
           })
         ) : (
-          <div className="empty-conatiner">
-            <FontAwesomeIcon className="reminder-bell" icon={faBell} />
+          <div className="empty-container">
+            <FontAwesomeIcon className="emptyIcon" icon={faBell} />
             <p>No Reminders to Display</p>
           </div>
         )}

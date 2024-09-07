@@ -9,14 +9,79 @@
   text-decoration: underline;
 }
 
-.binList .buttonContainer button {
+.binList .buttonContainer .right button {
   font-size: 16px;
   color: rgb(92, 92, 92);
   font-weight: 300;
+}
+
+.binList .content .empty-container {
+  margin-top: 300px;
 }
 
 .separator {
   margin: 0 20px;
   pointer-events: none;
   user-select: none;
+}
+
+.mobileSelectorContainer {
+  display: none;
+}
+
+@media (max-width: 910px) {
+  .content-container .binList {
+    width: 95%;
+  }
+}
+
+@media (max-width: 670px) {
+  .binList .buttonContainer .filterButton,
+  .buttonContainer h4 {
+    display: flex;
+  }
+
+  .binList .buttonContainer {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .binList .binItemList {
+    display: none;
+  }
+
+  .content-container .binList .empty-container {
+    margin-top: 250px;
+  }
+
+  .binItem.description {
+    display: none;
+  }
+
+  .mobileSelectorContainer {
+    display: flex;
+  }
+
+  .mobileBinItems {
+    display: block;
+  }
+}
+
+@media (max-width: 350px) {
+  .binList .buttonContainer {
+    margin-top: 30px;
+  }
+  .binList .buttonContainer {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .content-container .binList .empty-container {
+    margin-top: 220px;
+  }
+
+  .content-container .binList .empty-container .emptyIcon {
+    height: 120px;
+  }
 }

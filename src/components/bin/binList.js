@@ -2,11 +2,13 @@ import { useState, useContext } from "react";
 import BinItem from "./binItem";
 import "./binList.css";
 import { BinContext } from "../../context/binContext";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import MobileTask from "../tasks/mobileTask";
 function BinList() {
   const [checkSelected, setCheckSelected] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
-  const [binType, setBinType] = useState("notes");
+  const [binType, setBinType] = useState("tasks");
   const {
     binNoteItems,
     deleteNotesFromBin,
@@ -25,6 +27,12 @@ function BinList() {
 
     setCheckSelected([]);
     setSelectAll(false);
+  };
+
+  const handleBinFilter = (type) => {
+    setSelectAll(false);
+    setCheckSelected([]);
+    setBinType(type);
   };
 
   const handleChange = (index) => {
@@ -76,18 +84,51 @@ function BinList() {
           handleChange={handleSelectAll}
           checked={selectAll}
         />
-        {binNoteItems.map((item, index) => {
-          return (
-            <BinItem
-              key={item.id}
-              name={item.content}
-              handleChange={() => handleChange(index)}
-              col1={item["date created"]}
-              col2={item["date deleted"]}
-              checked={checkSelected.includes(index)}
-            />
-          );
-        })}
+        <div className="mobileSelectContainer">
+          <input
+            type="checkbox"
+            onChange={handleSelectAll}
+            checked={selectAll}
+          ></input>
+          <label onClick={handleSelectAll}>Select All</label>
+        </div>
+        {binNoteItems.length > 0 ? (
+          binNoteItems.map((item, index) => {
+            return (
+              <>
+                <div className="binItemList">
+                  <BinItem
+                    key={item.id}
+                    name={item.content}
+                    handleChange={() => handleChange(index)}
+                    col1={item["date created"]}
+                    col2={item["date deleted"]}
+                    checked={checkSelected.includes(index)}
+                  />
+                </div>
+                <div className="mobileBinItems">
+                  {binNoteItems.map((item, index) => {
+                    return (
+                      <MobileTask
+                        key={item.id}
+                        title={item.content}
+                        type="bin"
+                        selectAll={selectAll}
+                        checked={checkSelected.includes(index)}
+                        onChange={() => handleChange(index)}
+                      />
+                    );
+                  })}
+                </div>
+              </>
+            );
+          })
+        ) : (
+          <div className="empty-container">
+            <FontAwesomeIcon className="emptyIcon" icon={faTrash} />
+            <p>Notes bin is empty</p>
+          </div>
+        )}
       </div>
     );
   };
@@ -104,18 +145,54 @@ function BinList() {
           handleChange={handleSelectAll}
           checked={selectAll}
         />
-        {binTaskItems.map((item, index) => {
-          return (
-            <BinItem
-              key={item.key}
-              name={item.title}
-              handleChange={() => handleChange(index)}
-              col1={item.dateDue}
-              col2={item.dateDeleted}
-              checked={checkSelected.includes(index)}
-            />
-          );
-        })}
+        <div className="mobileSelectContainer">
+          <input
+            type="checkbox"
+            onChange={handleSelectAll}
+            checked={selectAll}
+          ></input>
+          <label onClick={handleSelectAll}>Select All</label>
+        </div>
+        {binTaskItems.length > 0 ? (
+          <>
+            <div className="binItemList">
+              {binTaskItems.map((item, index) => {
+                return (
+                  <BinItem
+                    key={item.key}
+                    name={item.title}
+                    handleChange={() => handleChange(index)}
+                    col1={item.dateDue}
+                    col2={item.dateDeleted}
+                    checked={checkSelected.includes(index)}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="mobileBinItems">
+              {binTaskItems.map((item, index) => {
+                return (
+                  <MobileTask
+                    key={item.key}
+                    title={item.title}
+                    type="bin"
+                    dateDue={item.dateDue}
+                    deletedOn={item.dateDeleted}
+                    selectAll={selectAll}
+                    checked={checkSelected.includes(index)}
+                    onChange={() => handleChange(index)}
+                  />
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <div className="empty-container">
+            <FontAwesomeIcon className="emptyIcon" icon={faTrash} />
+            <p>Task bin is empty</p>
+          </div>
+        )}
       </div>
     );
   };
@@ -124,11 +201,17 @@ function BinList() {
     <div className="binList">
       <div className="buttonContainer">
         <div className="left">
-          <button className="buttonSimple" onClick={() => setBinType("notes")}>
-            Notes
-          </button>
-          <button className="buttonSimple" onClick={() => setBinType("tasks")}>
+          <button
+            className={`filterButton ${binType === "tasks" ? "active" : ""}`}
+            onClick={() => handleBinFilter("tasks")}
+          >
             Tasks
+          </button>
+          <button
+            className={`filterButton ${binType === "notes" ? "active" : ""}`}
+            onClick={() => handleBinFilter("notes")}
+          >
+            Notes
           </button>
         </div>
         <div className="right">
