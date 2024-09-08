@@ -7,6 +7,7 @@ import { getDateDDMMYYYY } from "../../utils/dateUtils";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 function NoteList() {
+  const [activeNoteIndex, setActiveNoteIndex] = useState(null);
   const [noteContent, setNoteContent] = useLocalStorage("noteContent", []);
   const [noteDraft, setNoteDraft] = useState([...noteContent]);
   const { addNoteToBin, clearRestoredNotes, restoredNotes } =
@@ -24,13 +25,22 @@ function NoteList() {
     }
   }, [restoredNotes, clearRestoredNotes, noteContent]);
 
+  const handleOnClose = () => {
+    handleBlur(activeNoteIndex);
+  };
+
   useEffect(() => {
-    window.addEventListener("beforeunload", handleBlur);
+    window.addEventListener("beforeunload", handleOnClose);
 
     return () => {
-      window.removeEventListener("beforeunload", handleBlur);
+      window.removeEventListener("beforeunload", handleOnClose);
     };
   }, []);
+
+  const handleNoteClick = (index) => {
+    console.log(index);
+    setActiveNoteIndex(index);
+  };
 
   const handleChange = (index, event) => {
     const newDraft = [...noteDraft];
@@ -55,12 +65,15 @@ function NoteList() {
   };
 
   const handleBlur = (index) => {
-    const newContent = [...noteContent];
-    newContent[index] = noteDraft[index];
-    setNoteContent(newContent);
+    setNoteContent((prev) => {
+      const newContent = [...prev];
+      newContent[index] = noteDraft[index];
+      return newContent;
+    });
   };
 
   const handleCreate = () => {
+    console.log(noteContent);
     const newArray = [
       {
         id: uuidv4(),
@@ -87,11 +100,13 @@ function NoteList() {
         {noteContent.map((content, index) => (
           <Note
             key={index}
+            index={index}
             content={noteDraft[index].content}
             edit={(event) => handleChange(index, event)}
             onClick={() => handleDelete(index)}
             onBlur={() => handleBlur(index)}
             color={content.color ? content.color : ""}
+            onNoteClick={handleNoteClick}
           />
         ))}
       </div>

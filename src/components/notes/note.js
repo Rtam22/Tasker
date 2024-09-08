@@ -32,7 +32,10 @@ function Note(props) {
   };
 
   return (
-    <div className={`note ${noteColorSelect(props.color).color}`}>
+    <div
+      className={`note ${noteColorSelect(props.color).color}`}
+      onClick={() => props.onNoteClick(props.index)}
+    >
       <div className={`note-options ${noteColorSelect(props.color).colorTop}`}>
         <button onClick={props.onClick}>x</button>
       </div>
