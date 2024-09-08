@@ -24,6 +24,14 @@ function NoteList() {
     }
   }, [restoredNotes, clearRestoredNotes, noteContent]);
 
+  useEffect(() => {
+    window.addEventListener("beforeunload", handleBlur);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBlur);
+    };
+  }, []);
+
   const handleChange = (index, event) => {
     const newDraft = [...noteDraft];
     newDraft[index].content = event.target.value;
