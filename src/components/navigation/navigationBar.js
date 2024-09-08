@@ -70,12 +70,12 @@ function NavigationBar({ onClick }) {
       </NavLink>
 
       <hr></hr>
-      <NavLink to="/archive">
-        <NavigationButton
-          icon={<FontAwesomeIcon className="nav-icon" icon={faBoxArchive} />}
-          title="Archive"
-        />
-      </NavLink>
+
+      <NavigationButton
+        icon={<FontAwesomeIcon className="nav-icon" icon={faBoxArchive} />}
+        title="Archive"
+        inactive={true}
+      />
 
       <NavLink to="/bin">
         <NavigationButton

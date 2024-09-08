@@ -47,6 +47,10 @@ p.taskTitle {
   display: none;
 }
 
+.inActive {
+  color: gray;
+}
+
 @media (max-width: 1500px) {
   .desktopNavigation {
     display: none;

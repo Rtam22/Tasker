@@ -2,7 +2,11 @@ import "./navigationButton.css";
 
 function NavigationButton(props) {
   return (
-    <div className={"navigationButton " + props.active}>
+    <div
+      className={`navigationButton ${props.inactive ? "inactive" : ""} ${
+        props.active ? "active" : ""
+      }`}
+    >
       {props.icon}
       <p>{props.title}</p>
       <p className={`notificationNumber ${props.reminder ? "reminder" : ""}`}>

@@ -65,3 +65,13 @@ p.notificationNumber {
   padding-right: 1px;
   transform: translateX(7px);
 }
+
+.navigationButton.inactive p,
+.navigationButton.inactive .nav-icon {
+  color: gray;
+}
+
+.navigationButton.inactive {
+  background-color: #292929;
+  cursor: auto;
+}
