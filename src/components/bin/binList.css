@@ -9,6 +9,12 @@
   text-decoration: underline;
 }
 
+.binItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .binList .buttonContainer .right button {
   font-size: 16px;
   color: rgb(92, 92, 92);

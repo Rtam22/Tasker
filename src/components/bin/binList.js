@@ -93,36 +93,32 @@ function BinList() {
           <label onClick={handleSelectAll}>Select All</label>
         </div>
         {binNoteItems.length > 0 ? (
-          binNoteItems.map((item, index) => {
-            return (
-              <>
-                <div className="binItemList">
-                  <BinItem
-                    key={item.id}
-                    name={item.content}
-                    handleChange={() => handleChange(index)}
-                    col1={item["date created"]}
-                    col2={item["date deleted"]}
-                    checked={checkSelected.includes(index)}
-                  />
-                </div>
-                <div className="mobileBinItems">
-                  {binNoteItems.map((item, index) => {
-                    return (
-                      <MobileTask
-                        key={item.id}
-                        title={item.content}
-                        type="bin"
-                        selectAll={selectAll}
-                        checked={checkSelected.includes(index)}
-                        onChange={() => handleChange(index)}
-                      />
-                    );
-                  })}
-                </div>
-              </>
-            );
-          })
+          <>
+            <div className="binItemList">
+              {binNoteItems.map((item, index) => (
+                <BinItem
+                  key={item.id}
+                  name={item.content}
+                  handleChange={() => handleChange(index)}
+                  col1={item["date created"]}
+                  col2={item["date deleted"]}
+                  checked={checkSelected.includes(index)}
+                />
+              ))}
+            </div>
+            <div className="mobileBinItems">
+              {binNoteItems.map((item, index) => (
+                <MobileTask
+                  key={item.id}
+                  title={item.content}
+                  type="bin"
+                  selectAll={selectAll}
+                  checked={checkSelected.includes(index)}
+                  onChange={() => handleChange(index)}
+                />
+              ))}
+            </div>
+          </>
         ) : (
           <div className="empty-container">
             <FontAwesomeIcon className="emptyIcon" icon={faTrash} />
