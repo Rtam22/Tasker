@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.createBox.mobile {
+  display: none;
+}
+
 .mobileSelectContainer {
   display: none;
 }
@@ -33,6 +37,15 @@
   .taskList .content {
     gap: 20px;
   }
+
+  .createBox {
+    display: none;
+  }
+
+  .createBox.mobile {
+    display: inline-block;
+  }
+
   .mobileSelectContainer {
     padding: 0 10px;
     height: 40px;

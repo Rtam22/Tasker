@@ -83,7 +83,7 @@ const TaskList = ({
       ));
     } else {
       return (
-        <button className="createBox" onClick={onCreate}>
+        <button className="createBox mobile" onClick={onCreate}>
           New Task
         </button>
       );
