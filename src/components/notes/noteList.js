@@ -38,7 +38,6 @@ function NoteList() {
   }, []);
 
   const handleNoteClick = (index) => {
-    console.log(index);
     setActiveNoteIndex(index);
   };
 
@@ -73,7 +72,6 @@ function NoteList() {
   };
 
   const handleCreate = () => {
-    console.log(noteContent);
     const newArray = [
       {
         id: uuidv4(),

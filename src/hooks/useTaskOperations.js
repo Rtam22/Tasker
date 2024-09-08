@@ -46,8 +46,6 @@ const UseTaskOperations = () => {
       setSelectAll(false);
       return;
     }
-    // const sortedIndex = selected.sort((a, b) => b + a);
-    console.log(tasks);
     const deletedArray = tasks.filter((_, index) => selected.includes(index));
     deletedArray.forEach((item) => {
       item.dateDeleted = getDateDDMMYYYY();

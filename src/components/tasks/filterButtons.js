@@ -2,7 +2,6 @@ import "./filterButtons.css";
 
 const FilterButtons = ({ filterTasks, filter }) => {
   const handleClick = (filter) => {
-    console.log(filter);
     filterTasks(filter);
   };
 
