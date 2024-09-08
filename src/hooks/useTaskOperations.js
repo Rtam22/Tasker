@@ -58,12 +58,22 @@ const UseTaskOperations = () => {
     setSelectAll(false);
   };
 
-  const handleSelectAll = () => {
+  const handleSelectAll = (tasks) => {
     if (selectAll) {
       setSelected([]);
       setSelectAll(false);
     } else {
-      const index = taskItems.map((_, index) => index);
+      const index = taskItems
+        .map((mainTasks, index) => {
+          const result = tasks.find((task) => task.key === mainTasks.key);
+
+          if (result) {
+            return index;
+          } else {
+            return null;
+          }
+        })
+        .filter((item) => item !== null);
       setSelected(index);
       setSelectAll(true);
     }

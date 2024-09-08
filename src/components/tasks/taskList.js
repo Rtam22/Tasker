@@ -2,6 +2,7 @@ import Tasks from "./tasks";
 import "./taskList.css";
 import { convertDueDate } from "../../utils/dateUtils";
 import MobileTask from "./mobileTask";
+import { useEffect, useState } from "react";
 
 const TaskList = ({
   tasks,
@@ -12,9 +13,16 @@ const TaskList = ({
   onCreate,
   onEdit,
 }) => {
+  const [localSelected, setLocalSelected] = useState([]);
   const selectTask = (index) => {
     onChange(index);
   };
+
+  useEffect(() => {
+    if (selected.length === 0) {
+      setLocalSelected([]);
+    }
+  }, [selected]);
 
   const handleDueDate = (task) => {
     return convertDueDate(task.dateDue);
@@ -40,6 +48,30 @@ const TaskList = ({
     }
   };
 
+  const onSelect = (index) => {
+    const findSelected = selected.find((task) => task === index);
+    if (findSelected + 1) {
+      const newArray = selected.filter((item) => item !== index);
+      setLocalSelected(newArray);
+    } else {
+      setLocalSelected([index, ...selected]);
+    }
+    selectTask(index);
+  };
+
+  const onSelectAll = (tasks) => {
+    handleSelectAll(tasks);
+    let selected = [];
+    if (!checkedAll) {
+      tasks.forEach((__, index) => {
+        selected = [index, ...selected];
+      });
+      setLocalSelected(selected);
+    } else {
+      setLocalSelected([]);
+    }
+  };
+
   const mapTasks = () => {
     if (tasks?.length > 0) {
       return tasks.map((task, index) => (
@@ -50,8 +82,8 @@ const TaskList = ({
           status={task.status}
           priority={convertPriority(task.priority)}
           priorityColor={task.priority}
-          onChange={() => selectTask(index)}
-          checked={selected.includes(index)}
+          onChange={() => onSelect(index)}
+          checked={localSelected.includes(index)}
           onEdit={onEdit}
           task={task}
         />
@@ -76,7 +108,7 @@ const TaskList = ({
           priority={convertPriority(task.priority)}
           priorityColor={task.priority}
           onChange={() => selectTask(index)}
-          checked={selected.includes(index)}
+          checked={localSelected.includes(index)}
           onEdit={onEdit}
           task={task}
         />
@@ -96,10 +128,10 @@ const TaskList = ({
         <div className="mobileSelectContainer">
           <input
             type="checkbox"
-            onChange={handleSelectAll}
+            onChange={() => onSelectAll(tasks)}
             checked={checkedAll}
           ></input>
-          <label onClick={handleSelectAll}>Select All</label>
+          <label onClick={() => onSelectAll(tasks)}>Select All</label>
         </div>
         <Tasks
           title="Title"
@@ -107,7 +139,7 @@ const TaskList = ({
           status="Status"
           priority="Priority"
           class="description"
-          onChange={handleSelectAll}
+          onChange={() => onSelectAll(tasks)}
           checked={checkedAll}
         />
         {mapTasks()}
