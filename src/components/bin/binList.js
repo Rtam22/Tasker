@@ -94,7 +94,7 @@ function BinList() {
         </div>
         {binNoteItems.length > 0 ? (
           <>
-            <div className="binItemList">
+            <div className="binItemList" data-testid="binList">
               {binNoteItems.map((item, index) => (
                 <BinItem
                   key={item.id}
@@ -204,6 +204,7 @@ function BinList() {
             Tasks
           </button>
           <button
+            data-testid="notes-tab"
             className={`filterButton ${binType === "notes" ? "active" : ""}`}
             onClick={() => handleBinFilter("notes")}
           >

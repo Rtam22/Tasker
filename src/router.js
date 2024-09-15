@@ -10,7 +10,7 @@ import TodayTasks from "./pages/tasks/todayTasks";
 import WeekTasks from "./pages/tasks/weekTasks";
 import SearchPage from "./pages/searchPage";
 
-export const router = createBrowserRouter([
+export const routesConfig = [
   {
     path: "/",
     element: <App />,
@@ -26,4 +26,6 @@ export const router = createBrowserRouter([
       { path: "search", element: <SearchPage /> },
     ],
   },
-]);
+];
+
+export const router = createBrowserRouter(routesConfig);

@@ -49,6 +49,7 @@ function Note({
       </div>
       <div className="note-content">
         <textarea
+          placeholder="Enter note content…"
           value={noteContent}
           onChange={handleChange}
           onBlur={handleBlur}

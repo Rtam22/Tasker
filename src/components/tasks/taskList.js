@@ -107,7 +107,7 @@ const TaskList = ({
           status={task.status}
           priority={convertPriority(task.priority)}
           priorityColor={task.priority}
-          onChange={() => selectTask(index)}
+          onChange={() => onSelect(index)}
           checked={localSelected.includes(index)}
           onEdit={onEdit}
           task={task}
