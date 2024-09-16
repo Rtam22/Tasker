@@ -9,6 +9,15 @@
   width: 0;
 }
 
+.mobileNavigationBar .navBar {
+  opacity: 100;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.mobileNavigationBar.hide .navBar {
+  opacity: 0;
+}
+
 .mobileNavigationContainer {
   z-index: 1002;
   display: none;
