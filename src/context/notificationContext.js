@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { TaskContext } from "./taskContext";
 import { convertDueByHours, getDateDDMMYYYY } from "../utils/dateUtils";
 import { v4 as uuidv4 } from "uuid";
-import { LoadUpLocalStorage, saveToLocalStorage } from "../utils/StorageUtils";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const NotificationContext = createContext();
