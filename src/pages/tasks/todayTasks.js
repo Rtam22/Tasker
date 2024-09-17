@@ -16,7 +16,6 @@ import {
   filterTasksByToday,
 } from "../../utils/filterUtils";
 function TodayTasks() {
-  const [filteredTasks, setFilteredTasks] = useState([]);
   const {
     taskItems,
     createModal,
@@ -64,7 +63,7 @@ function TodayTasks() {
           <ButtonList
             handleDelete={handleDelete}
             showCreateModal={showCreateModal}
-            taskItems={taskItems}
+            taskItems={filteredTaskList()}
           />
         </div>
       </div>

@@ -61,7 +61,7 @@ function AllTasks() {
           <ButtonList
             handleDelete={handleDelete}
             showCreateModal={showCreateModal}
-            taskItems={taskItems}
+            taskItems={filteredTaskList()}
           />
         </div>
       </div>
