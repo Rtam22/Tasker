@@ -21,6 +21,7 @@ export const getDateMonthsFromToday = (months) => {
   }
   const result = new Date();
   result.setDate(result.getMonth() + months);
+  return result;
 };
 
 export const setInitialDate = (date) => {

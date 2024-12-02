@@ -74,9 +74,10 @@ function Calendar() {
     return calendarCells.map((day, index) => {
       const dateKey = day
         ? `${day < 10 ? `0${day}` : day}/${
-            month < 10 ? `0${month + 1}` : month
+            month + 1 < 10 ? `0${month + 1}` : month + 1
           }/${year}`
         : `empty/${index}/${month + 1}`;
+      console.log(dateKey);
       return (
         <div key={dateKey} className="cell">
           <p

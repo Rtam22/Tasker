@@ -37,6 +37,8 @@ const TaskCreateForm = ({ onClose, TaskSubmit, mode, task }) => {
       dateCreated:
         currentMode === "edit" ? task.dateCreated : getDateDDMMYYYY(),
       dateDeleted: currentMode === "edit" ? task.dateDeleted : "",
+      isDeleted: false,
+      isArchived: false,
       notified: {
         dueSoon:
           currentMode === "edit"

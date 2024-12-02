@@ -1,0 +1,7 @@
+.archiveList {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0 auto;
+}

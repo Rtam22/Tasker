@@ -52,6 +52,19 @@ export const TaskProvider = ({ children }) => {
     setTaskItems(newTaskArray);
   };
 
+  const archiveTask = (archivedArray) => {
+    const newTaskArray = taskItems.map((task) => {
+      const found = archivedArray.find(
+        (taskArchived) => task.key === taskArchived.key
+      );
+      if (found) {
+        task.isArchived = true;
+      }
+      return task;
+    });
+    setTaskItems(newTaskArray);
+  };
+
   const changeWeekCount = () => {
     if (!taskItems) {
       return;
@@ -83,6 +96,7 @@ export const TaskProvider = ({ children }) => {
         createTask,
         editTask,
         deleteTask,
+        archiveTask,
         changeNotified,
         todayCount,
         weekCount,

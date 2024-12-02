@@ -1,4 +1,9 @@
-const ButtonList = ({ showCreateModal, handleDelete, taskItems }) => {
+const ButtonList = ({
+  showCreateModal,
+  handleDelete,
+  taskItems,
+  handleArchive,
+}) => {
   return (
     <div className="right">
       <button
@@ -6,6 +11,10 @@ const ButtonList = ({ showCreateModal, handleDelete, taskItems }) => {
         onClick={() => showCreateModal("create", null)}
       >
         Create
+      </button>
+      <span className="separator">|</span>
+      <button className="buttonSimple" onClick={() => handleArchive(taskItems)}>
+        Archive
       </button>
       <span className="separator">|</span>
       <button className="buttonSimple" onClick={() => handleDelete(taskItems)}>

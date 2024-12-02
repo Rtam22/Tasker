@@ -1,0 +1,8 @@
+.archiveItem {
+  border: solid 1px rgb(71, 71, 71);
+  border-radius: 5px;
+  width: 93.5%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

@@ -9,7 +9,7 @@ const UseTaskOperations = () => {
   const [selected, setSelected] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const { addTaskToBin } = useContext(BinContext) ?? {};
-  const { taskItems, createTask, editTask, deleteTask } =
+  const { taskItems, createTask, editTask, deleteTask, archiveTask } =
     useContext(TaskContext) ?? {};
 
   const showCreateModal = (mode, task) => {
@@ -56,6 +56,18 @@ const UseTaskOperations = () => {
     setSelectAll(false);
   };
 
+  const handleArchive = (tasks) => {
+    if (tasks.length < 1) {
+      alert("Please select a task to archive");
+      setSelectAll(false);
+      return;
+    }
+    const archivedArray = tasks.filter((_, index) => selected.includes(index));
+    archiveTask(archivedArray);
+    setSelected([]);
+    setSelectAll(false);
+  };
+
   const handleSelectAll = (tasks) => {
     if (selectAll) {
       setSelected([]);
@@ -89,6 +101,7 @@ const UseTaskOperations = () => {
     handleDelete,
     handleSelectAll,
     handleEdit,
+    handleArchive,
   };
 };
 

@@ -28,6 +28,7 @@ function AllTasks() {
     handleDelete,
     handleSelectAll,
     handleEdit,
+    handleArchive,
   } = UseTaskOperations();
 
   const [filter, setFilter] = useState("");
@@ -37,18 +38,28 @@ function AllTasks() {
     filteredTaskList();
   };
 
+  const filterOutArchiveAndDeleted = (taskItemList) => {
+    const result = taskItemList.filter((item) => {
+      if (!item.isArchived && !item.isDeleted) {
+        return item;
+      }
+    });
+    return result;
+  };
+
   const filteredTaskList = () => {
+    const taskItemList = filterOutArchiveAndDeleted(taskItems);
     switch (filter) {
       case "highPriority":
-        return filterByPriority(taskItems);
+        return filterByPriority(taskItemList);
       case "dueSoon":
-        return filteredByDueSoon(taskItems);
+        return filteredByDueSoon(taskItemList);
       case "unCompleted":
-        return filterByUnCompleted(taskItems);
+        return filterByUnCompleted(taskItemList);
       case "completed":
-        return filterByCompleted(taskItems);
+        return filterByCompleted(taskItemList);
       default:
-        return taskItems;
+        return taskItemList;
     }
   };
 
@@ -62,6 +73,7 @@ function AllTasks() {
             handleDelete={handleDelete}
             showCreateModal={showCreateModal}
             taskItems={filteredTaskList()}
+            handleArchive={handleArchive}
           />
         </div>
       </div>
