@@ -69,6 +69,8 @@ const TaskCreateForm = ({ onClose, TaskSubmit, mode, task }) => {
         return "High";
       case "4":
         return "Important";
+      default:
+        return "Medium";
     }
   }
 

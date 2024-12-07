@@ -47,11 +47,9 @@ export const filterTasksByToday = (list) => {
 };
 
 export const filterOutArchiveAndDeleted = (taskItemList) => {
-  const result = taskItemList.filter((item) => {
-    if (!item.isArchived && !item.isDeleted) {
-      return item;
-    }
-  });
+  const result = taskItemList.filter(
+    (item) => !item.isArchived && !item.isDeleted
+  );
   return result;
 };
 

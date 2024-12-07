@@ -23,7 +23,6 @@ const SearchPage = () => {
     handleCreate,
     handleEdit,
     onSelected,
-    handleDelete,
     handleSelectAll,
   } = UseTaskOperations();
 
@@ -56,9 +55,7 @@ const SearchPage = () => {
     }
   }, [taskItems, isLoaded, query]);
 
-  {
-    !isLoaded && <p>Is Loading</p>;
-  }
+  !isLoaded && <p>Is Loading</p>;
 
   return (
     <div className="content-container">

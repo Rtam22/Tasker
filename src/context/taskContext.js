@@ -59,7 +59,7 @@ export const TaskProvider = ({ children }) => {
       );
       if (found) {
         task.isArchived = true;
-        if (task.status != "Completed") {
+        if (task.status !== "Completed") {
           task.status = "Incomplete";
         }
       }

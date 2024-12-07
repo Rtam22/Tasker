@@ -16,7 +16,7 @@ function Archive() {
   const handleSelect = (index) => {
     const found = selected.find((select) => index === select);
     if (found === 0 || found) {
-      const newArray = selected.filter((select) => select != index);
+      const newArray = selected.filter((select) => select !== index);
       setSelected(newArray);
     } else {
       setSelected([...selected, index]);
