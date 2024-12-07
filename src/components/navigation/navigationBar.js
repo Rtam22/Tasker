@@ -13,10 +13,14 @@ import {
 import { TaskContext } from "../../context/taskContext";
 import { useContext } from "react";
 import { NotificationContext } from "../../context/notificationContext";
+import { filterOutArchiveAndDeleted } from "../../utils/filterUtils";
 
 function NavigationBar({ onClick }) {
   const { weekCount, todayCount, taskItems } = useContext(TaskContext);
   const { notifications } = useContext(NotificationContext);
+  const filteredTasks = filterOutArchiveAndDeleted(taskItems);
+  /*   const filteredTodayTasks = filterOutArchiveAndDeleted(todayCount);
+  const filteredWeekTasks = filterOutArchiveAndDeleted(weekCount); */
   return (
     <div className="navBar">
       <button className="closeButton" onClick={onClick}>
@@ -61,7 +65,7 @@ function NavigationBar({ onClick }) {
       <NavLink to="/tasks">
         <TasksasknavigationButton
           title="All Tasks"
-          notification={taskItems ? taskItems.length : null}
+          notification={filteredTasks ? filteredTasks.length : null}
         />
       </NavLink>
 
