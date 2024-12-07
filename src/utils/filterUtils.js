@@ -45,3 +45,20 @@ export const filterTasksByToday = (list) => {
     return filteredTasks;
   }
 };
+
+export const filterOutArchiveAndDeleted = (taskItemList) => {
+  const result = taskItemList.filter((item) => {
+    if (!item.isArchived && !item.isDeleted) {
+      return item;
+    }
+  });
+  return result;
+};
+
+export const filterTasksByDate = (taskList, date) => {
+  return taskList.filter((task) => task.dateDue.slice(3) === date.slice(3));
+};
+
+export const filterTasksByArchive = (taskList) => {
+  return taskList.filter((task) => task.isArchived === true);
+};
