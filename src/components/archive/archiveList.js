@@ -1,43 +1,40 @@
-import Tasks from "../tasks/tasks";
+import { useState } from "react";
+import ArchiveItem from "./archiveItem";
 import "./archiveList.css";
-import DateSelection from "./dateSelection";
-
-const ArchiveList = ({ taskList }) => {
+const ArchiveList = ({
+  taskList,
+  handleSelect,
+  handleSelectAll,
+  selectAll,
+  selected,
+}) => {
   return (
     <div className="archiveList">
-      <DateSelection />
-      <Tasks
-        title="Title"
-        dateDue="Due Date"
-        status="Status"
-        priority="Priority"
-        class="description"
-      />
-
-      {taskList ? (
-        taskList.map((task, index) => {
-          return <Tasks key={index} title={task.title} />;
-        })
-      ) : (
-        <div>Empty</div>
-      )}
+      <div className="description archiveItem">
+        <input
+          value={selectAll}
+          type="checkbox"
+          onChange={() => handleSelectAll()}
+        ></input>
+        <p>Title</p>
+        <p>Status</p>
+        <p>Date Due</p>
+      </div>
+      {taskList.map((task, index) => {
+        return (
+          <ArchiveItem
+            index={index}
+            key={index}
+            title={task.title}
+            status={task.status}
+            dueDate={task.dateDue}
+            handleSelect={handleSelect}
+            value={selected.find((select) => index === select)}
+          />
+        );
+      })}
     </div>
   );
 };
 
 export default ArchiveList;
-
-{
-  /* <Tasks
-key={task.key}
-title={task.title}
-dateDue={handleDueDate(task)}
-status={task.status}
-priority={convertPriority(task.priority)}
-priorityColor={task.priority}
-onChange={() => onSelect(index)}
-checked={localSelected.includes(index)}
-onEdit={onEdit}
-task={task}
-/> */
-}

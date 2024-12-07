@@ -1,0 +1,29 @@
+.dateSelection {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  border: 1px solid rgb(195, 195, 195);
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.dateSelection button {
+  width: 50px;
+  font-size: 28px;
+  color: rgb(58, 58, 58);
+  height: 100%;
+}
+
+.dateSelection h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media (max-width: 910px) {
+  .dateSelection {
+    width: 89%;
+  }
+}

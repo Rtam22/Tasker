@@ -2,6 +2,16 @@
   width: 75%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   margin: 0 auto;
+}
+
+.description.archiveItem:hover {
+  background-color: aliceblue;
+}
+
+@media (max-width: 910px) {
+  .archiveList {
+    width: 95%;
+  }
 }
