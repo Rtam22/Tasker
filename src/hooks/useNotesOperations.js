@@ -4,9 +4,20 @@ import { v4 as uuidv4 } from "uuid";
 import { getDateDDMMYYYY } from "../utils/dateUtils";
 import { useLocalStorage } from "./useLocalStorage";
 
+const inital = [
+  {
+    id: uuidv4(),
+    type: "note",
+    content: "",
+    "date created": getDateDDMMYYYY(),
+    "date deleted": "",
+    color: Math.floor(Math.random() * 4),
+  },
+];
+
 function UseNotesOperations() {
   const [activeNoteIndex, setActiveNoteIndex] = useState(null);
-  const [noteContent, setNoteContent] = useLocalStorage("noteContent", []);
+  const [noteContent, setNoteContent] = useLocalStorage("noteContent", inital);
   const [noteDraft, setNoteDraft] = useState([...noteContent]);
   const { addNoteToBin, clearRestoredNotes, restoredNotes } =
     useContext(BinContext) ?? {};
