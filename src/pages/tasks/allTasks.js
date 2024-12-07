@@ -13,6 +13,7 @@ import {
   filteredByDueSoon,
   filterByUnCompleted,
   filterByCompleted,
+  filterOutArchiveAndDeleted,
 } from "../../utils/filterUtils";
 function AllTasks() {
   const {
@@ -36,15 +37,6 @@ function AllTasks() {
   const filterTasks = (filterType) => {
     setFilter(filterType);
     filteredTaskList();
-  };
-
-  const filterOutArchiveAndDeleted = (taskItemList) => {
-    const result = taskItemList.filter((item) => {
-      if (!item.isArchived && !item.isDeleted) {
-        return item;
-      }
-    });
-    return result;
   };
 
   const filteredTaskList = () => {

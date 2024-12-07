@@ -14,6 +14,7 @@ import {
   filterByUnCompleted,
   filterByCompleted,
   filterTasksByToday,
+  filterOutArchiveAndDeleted,
 } from "../../utils/filterUtils";
 function TodayTasks() {
   const {
@@ -29,6 +30,7 @@ function TodayTasks() {
     onSelected,
     handleDelete,
     handleSelectAll,
+    handleArchive,
   } = UseTaskOperations();
 
   const [filter, setFilter] = useState("");
@@ -64,11 +66,12 @@ function TodayTasks() {
             handleDelete={handleDelete}
             showCreateModal={showCreateModal}
             taskItems={filteredTaskList()}
+            handleArchive={handleArchive}
           />
         </div>
       </div>
       <TaskList
-        tasks={filteredTaskList()}
+        tasks={filterOutArchiveAndDeleted(filteredTaskList())}
         onChange={onSelected}
         selected={selected}
         handleSelectAll={handleSelectAll}

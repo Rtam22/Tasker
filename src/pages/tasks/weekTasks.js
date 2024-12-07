@@ -14,6 +14,7 @@ import {
   filterByUnCompleted,
   filterByCompleted,
   filterTasksByWeek,
+  filterOutArchiveAndDeleted,
 } from "../../utils/filterUtils";
 
 function WeekTasks() {
@@ -30,6 +31,7 @@ function WeekTasks() {
     onSelected,
     handleDelete,
     handleSelectAll,
+    handleArchive,
   } = UseTaskOperations();
 
   const [filter, setFilter] = useState("");
@@ -65,11 +67,12 @@ function WeekTasks() {
             handleDelete={handleDelete}
             showCreateModal={showCreateModal}
             taskItems={filteredTaskList()}
+            handleArchive={handleArchive}
           />
         </div>
       </div>
       <TaskList
-        tasks={filteredTaskList()}
+        tasks={filterOutArchiveAndDeleted(filteredTaskList())}
         onChange={onSelected}
         selected={selected}
         handleSelectAll={handleSelectAll}

@@ -4,12 +4,12 @@ import { getDaysInMonth, getMonthName } from "../../utils/dateUtils";
 import { TaskContext } from "../../context/taskContext";
 import TaskCreateForm from "./taskForm";
 import UseTaskOperations from "../../hooks/useTaskOperations";
-
+import { filterOutArchiveAndDeleted } from "../../utils/filterUtils";
 function Calendar() {
   const { taskItems } = useContext(TaskContext);
   const [currentDate, setCurrentDate] = useState(new Date());
   const dayKey = ["mon", "tues", "wed", "thur", "fri", "sat", "sun"];
-
+  const filteredTasks = filterOutArchiveAndDeleted(taskItems);
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
   const daysInMonth = getDaysInMonth(year, month);
@@ -61,11 +61,11 @@ function Calendar() {
   };
 
   const taskCount = (datekey) => {
-    if (!taskItems) {
+    if (!filteredTasks) {
       return;
     }
     let count = 0;
-    const taskArray = [...taskItems];
+    const taskArray = [...filteredTasks];
     taskArray.forEach((task) => (task.dateDue === datekey ? count++ : null));
     return count > 0 ? count : null;
   };
@@ -98,13 +98,13 @@ function Calendar() {
   };
 
   const addTasksInCells = (dateKey) => {
-    if (!taskItems) {
+    if (!filteredTasks) {
       return;
     }
     let count = 0;
     let filled = false;
     const taskCountInDate = taskCount(dateKey);
-    const FilteredByPriority = taskItems
+    const FilteredByPriority = filteredTasks
       .filter((task) => task.dateDue === dateKey)
       .sort((a, b) => b.priority - a.priority);
 
@@ -148,13 +148,13 @@ function Calendar() {
       ) : null}
       <div className="topContainer">
         <button className="calendarButton" onClick={prevMonth}>
-          &lt;
+          ‹
         </button>
         <p>
           {getMonthName(currentDate)} {year}
         </p>
         <button className="calendarButton" onClick={nextMonth}>
-          &gt;
+          ›
         </button>
       </div>
       <div className="daysContainer">{addDayCell()}</div>

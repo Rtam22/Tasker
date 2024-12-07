@@ -4,7 +4,7 @@ import { convertDueByDays, convertDueByHours } from "../utils/dateUtils";
 
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { initialTasks } from "../data/tasksData";
-
+import { filterOutArchiveAndDeleted } from "../utils/filterUtils";
 export const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
@@ -59,6 +59,9 @@ export const TaskProvider = ({ children }) => {
       );
       if (found) {
         task.isArchived = true;
+        if (task.status != "Completed") {
+          task.status = "Incomplete";
+        }
       }
       return task;
     });
@@ -72,7 +75,7 @@ export const TaskProvider = ({ children }) => {
     const filteredTasks = taskItems.filter(
       (task) => convertDueByDays(task.dateDue) < 7
     );
-    setWeekCount(filteredTasks.length);
+    setWeekCount(filterOutArchiveAndDeleted(filteredTasks).length);
   };
 
   const changedayCount = () => {
@@ -82,7 +85,7 @@ export const TaskProvider = ({ children }) => {
     const filteredTasks = taskItems.filter(
       (task) => convertDueByHours(task.dateDue) < 24
     );
-    setTodayCount(filteredTasks.length);
+    setTodayCount(filterOutArchiveAndDeleted(filteredTasks).length);
   };
 
   const changeNotified = (updatedArray) => {
