@@ -1,5 +1,4 @@
 import "./navigationBar.css";
-import Logo from "./logo";
 import NavigationButton from "./navigationButton";
 import TasksasknavigationButton from "./tasknavigationButton";
 import { NavLink } from "react-router-dom";
@@ -26,7 +25,12 @@ function NavigationBar({ onClick }) {
       <button className="closeButton" onClick={onClick}>
         ‹
       </button>
-      <Logo />
+      <div className="navigationLogin">
+        <img src="https://placehold.co/50x50" alt="site logo"></img>
+        <NavLink to="/login">
+          <p className="loginButton">Login</p>
+        </NavLink>
+      </div>
 
       <hr></hr>
       <NavLink to="/notes">

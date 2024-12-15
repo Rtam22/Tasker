@@ -9,6 +9,7 @@ import CalendarTasks from "./pages/tasks/calendarTasks";
 import TodayTasks from "./pages/tasks/todayTasks";
 import WeekTasks from "./pages/tasks/weekTasks";
 import SearchPage from "./pages/searchPage";
+import LoginSignup from "./pages/loginSignup";
 
 export const routesConfig = [
   {
@@ -24,6 +25,8 @@ export const routesConfig = [
       { path: "tasks", element: <AllTasks /> },
       { path: "calendar", element: <CalendarTasks /> },
       { path: "search", element: <SearchPage /> },
+      { path: "login", element: <LoginSignup /> },
+      { path: "signup", element: <LoginSignup /> },
     ],
   },
 ];

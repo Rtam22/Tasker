@@ -49,6 +49,10 @@ export const NotificationProvider = ({ children }) => {
       return;
     }
     taskItems.forEach((task) => {
+      if (task.isArchived === true || task.isDeleted === true) {
+        return;
+      }
+      console.log(task);
       const taskHoursDue = convertDueByHours(task.dateDue);
       if (taskHoursDue < 24 && !task.notified.dueSoon) {
         addNotification(task, taskHoursDue, "dueSoon");
